@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-image: url('https://i.pinimg.com/236x/5d/27/3d/5d273dbb127dc6a82ae24d283429231d.jpg');
+  background-repeat: no-repeat;
+  
+}
+
+.App{
+  width:70%;
+  margin:auto;
+  padding: 3rem 0;
+  
+  .title{
+    text-align: center;
+    font-weight:bolder;
+  }
+  .header{
+    display:flex;
+    justify-content: space-between;
+    margin: 0 0 4rem 0;
+    
+    .add{
+      margin-top:0.5rem;
+    }
+  }
+
+  .smurf-list{
+    display:flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    .smurf{
+      width:30%;
+      background-color: dodgerblue;
+     
+      
+      
+    }
+  }
+  
+  
+}

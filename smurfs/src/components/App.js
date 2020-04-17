@@ -1,16 +1,39 @@
-import React, { Component } from "react";
-import "./App.css";
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your state management version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
-      </div>
-    );
-  }
+import React from "react";
+import { connect } from 'react-redux';
+import { getSmurfs } from '../actions/actions';
+import { addSmurf } from '../actions/actions';
+import { SmurfList } from './SmurfList';
+import  { NewSmurf } from './NewSmurf';
+
+const App = props => {
+
+
+  const fetchSmurfs = e => {
+    e.preventDefault();
+    props.getSmurfs();
 }
 
-export default App;
+const addSmurfs = newSmurf => {
+  props.addSmurf(newSmurf);
+  
+}
+
+  return (
+    <div className="App">
+      <h1 className='title'>SMURFS! 2.0 W/ Redux</h1>
+      <div className='header'>
+        <button className='button is-info is-outlined' 
+        onClick={fetchSmurfs}>Fetch Smurfs</button>
+        <NewSmurf addSmurfs={addSmurfs}/>
+      </div>
+      <SmurfList state={props.state}/>
+    </div>
+  );
+}
+
+const mapStateToProps = state => {
+  return { 
+    state: state
+  }
+}
+export default connect(mapStateToProps, { getSmurfs, addSmurf}) (App);
